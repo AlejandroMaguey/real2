@@ -1,0 +1,41 @@
+/*Import urls*/
+@if variable-exists(font-url-header){
+	@import url($font-url-header);
+}
+@if variable-exists(font-url-body){
+	@import url($font-url-body);
+}
+@if variable-exists(font-url-title){
+	@import url($font-url-title);
+}
+
+/*Convert pixels to ems*/
+@function em($target, $context: $base-font-size){
+	@return ($target/$context) * 1em;
+}
+@mixin background($color, $background-color){
+	.#{$color}{
+		background:$background-color;
+		
+		 @media only screen and (max-width: 766px) {
+                & {
+                   height: auto;
+                }
+            }
+		border-bottom:3px darken($background-color, 10%);
+	}
+}
+@mixin btn($color, $background-color){
+	.#{$color}{
+		padding:15px 15px;
+		background:$background-color;
+		text-align:center;
+		border-radius:2px;
+		box-shadow:2px 2px 0 0 darken($background-color, 10%);
+
+		&:hover{
+			background:darken($background-color, 10%);
+			box-shadow: 2px 2px 0 0 darken($background-color, 20%);
+		}
+	}
+}
